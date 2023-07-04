@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structdt" xml:lang="en-US">
+<title>dt&lt; n &gt; Struct Template Reference</title>
+<indexterm><primary>dt&lt; n &gt;</primary></indexterm>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structdt_1a20b50a200473064d480fb177819ca592"/>static double <emphasis role="strong">det</emphasis> (const <link linkend="_structmat">mat</link>&lt; n, n &gt; &amp;src)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+geometry.h</section>

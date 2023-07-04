@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tgaimage_8h_source" xml:lang="en-US">
+<title>tgaimage.h</title>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+5 
+6 <emphasis role="preprocessor">#pragma&#32;pack(push,1)</emphasis>
+7 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_t_g_a_header">TGAHeader</link>&#32;{
+8 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;idlength&#32;=&#32;0;
+9 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;colormaptype&#32;=&#32;0;
+10 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;datatypecode&#32;=&#32;0;
+11 &#32;&#32;&#32;&#32;std::uint16_t&#32;colormaporigin&#32;=&#32;0;
+12 &#32;&#32;&#32;&#32;std::uint16_t&#32;colormaplength&#32;=&#32;0;
+13 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;colormapdepth&#32;=&#32;0;
+14 &#32;&#32;&#32;&#32;std::uint16_t&#32;x_origin&#32;=&#32;0;
+15 &#32;&#32;&#32;&#32;std::uint16_t&#32;y_origin&#32;=&#32;0;
+16 &#32;&#32;&#32;&#32;std::uint16_t&#32;width&#32;=&#32;0;
+17 &#32;&#32;&#32;&#32;std::uint16_t&#32;height&#32;=&#32;0;
+18 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;bitsperpixel&#32;=&#32;0;
+19 &#32;&#32;&#32;&#32;std::uint8_t&#32;&#32;imagedescriptor&#32;=&#32;0;
+20 };
+21 <emphasis role="preprocessor">#pragma&#32;pack(pop)</emphasis>
+22 
+23 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_t_g_a_color">TGAColor</link>&#32;{
+24 &#32;&#32;&#32;&#32;std::uint8_t&#32;bgra[4]&#32;=&#32;{0,0,0,0};
+25 &#32;&#32;&#32;&#32;std::uint8_t&#32;bytespp&#32;=&#32;4;
+26 &#32;&#32;&#32;&#32;std::uint8_t&amp;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;bgra[i];&#32;}
+27 };
+28 
+29 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_t_g_a_image">TGAImage</link>&#32;{
+30 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;Format&#32;{&#32;GRAYSCALE=1,&#32;RGB=3,&#32;RGBA=4&#32;};
+31 &#32;&#32;&#32;&#32;<link linkend="_struct_t_g_a_image">TGAImage</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+32 &#32;&#32;&#32;&#32;<link linkend="_struct_t_g_a_image">TGAImage</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;w,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;h,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;bpp);
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;read_tga_file(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;filename);
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_tga_file(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;filename,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;vflip=<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;rle=<emphasis role="keyword">true</emphasis>)&#32;<emphasis role="keyword">const</emphasis>;
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;flip_horizontally();
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;flip_vertically();
+37 &#32;&#32;&#32;&#32;<link linkend="_struct_t_g_a_color">TGAColor</link>&#32;get(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;y)&#32;<emphasis role="keyword">const</emphasis>;
+38 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;set(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;y,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_t_g_a_color">TGAColor</link>&#32;&amp;c);
+39 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;width()&#32;&#32;<emphasis role="keyword">const</emphasis>;
+40 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;height()&#32;<emphasis role="keyword">const</emphasis>;
+41 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+42 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;load_rle_data(std::ifstream&#32;&amp;in);
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;unload_rle_data(std::ofstream&#32;&amp;out)&#32;<emphasis role="keyword">const</emphasis>;
+44 
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;w&#32;=&#32;0;
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;h&#32;=&#32;0;
+47 &#32;&#32;&#32;&#32;std::uint8_t&#32;bpp&#32;=&#32;0;
+48 &#32;&#32;&#32;&#32;std::vector&lt;std::uint8_t&gt;&#32;data&#32;=&#32;{};
+49 };
+</programlisting></section>

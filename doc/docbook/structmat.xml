@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structmat" xml:lang="en-US">
+<title>mat&lt; nrows, ncols &gt; Struct Template Reference</title>
+<indexterm><primary>mat&lt; nrows, ncols &gt;</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmat_1a13dff6a1ae61b1f4d00fe06e1ecc2012"/><link linkend="_structvec">vec</link>&lt; ncols &gt; &amp; <emphasis role="strong">operator[]</emphasis> (const int idx)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1aca55f262c99365e5621c20b94369ec71"/>const <link linkend="_structvec">vec</link>&lt; ncols &gt; &amp; <emphasis role="strong">operator[]</emphasis> (const int idx) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1aa57c75b65ada2bcf9365379eca476b46"/><link linkend="_structvec">vec</link>&lt; nrows &gt; <emphasis role="strong">col</emphasis> (const int idx) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a4410d272dcf2c6be373b1f0f50bff4aa"/>void <emphasis role="strong">set_col</emphasis> (const int idx, const <link linkend="_structvec">vec</link>&lt; nrows &gt; &amp;v)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1aaeff6c531862a39411e0291d09952425"/>double <emphasis role="strong">det</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a15e3daff06ce934f732b7b8d9aec8bc0"/><link linkend="_structmat">mat</link>&lt; nrows-1, ncols-1 &gt; <emphasis role="strong">get_minor</emphasis> (const int row, const int col) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a981f2f927fa04be53337e14c4b4fb12f"/>double <emphasis role="strong">cofactor</emphasis> (const int row, const int col) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a36076956947de8e0578da61e30598f0a"/><link linkend="_structmat">mat</link>&lt; nrows, ncols &gt; <emphasis role="strong">adjugate</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1aa44afd6641f368acd513ac526e108652"/><link linkend="_structmat">mat</link>&lt; nrows, ncols &gt; <emphasis role="strong">invert_transpose</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a9cdc5dbe6eb62dead6a04f17b183d0b0"/><link linkend="_structmat">mat</link>&lt; nrows, ncols &gt; <emphasis role="strong">invert</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmat_1a86b249c5b61f03cf4e71626731a1ced7"/><link linkend="_structmat">mat</link>&lt; ncols, nrows &gt; <emphasis role="strong">transpose</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmat_1a796cfcc7ca19bee79a3624a4c9240c1c"/>static <link linkend="_structmat">mat</link>&lt; nrows, ncols &gt; <emphasis role="strong">identity</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmat_1acf8c54b0e4010e3e6dfbc43e8828871d"/><link linkend="_structvec">vec</link>&lt; ncols &gt; <emphasis role="strong">rows</emphasis> [nrows] = {{}}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+geometry.h</section>

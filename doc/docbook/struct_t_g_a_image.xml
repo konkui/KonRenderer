@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_t_g_a_image" xml:lang="en-US">
+<title>TGAImage Struct Reference</title>
+<indexterm><primary>TGAImage</primary></indexterm>
+<simplesect>
+    <title>Public Types    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1acd41e9399e944e4d5dbc3d4e8dbe199d"/>enum <emphasis role="strong">Format</emphasis> { <emphasis role="strong">GRAYSCALE</emphasis> =1
+, <emphasis role="strong">RGB</emphasis> =3
+, <emphasis role="strong">RGBA</emphasis> =4
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a3a166d4d87c95c333780f04835f43794"/><emphasis role="strong">TGAImage</emphasis> (const int w, const int h, const int bpp)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a86ce3605b67682310b193852419e07f2"/>bool <emphasis role="strong">read_tga_file</emphasis> (const std::string filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a3c88a50f212d25ce711f7756325f79b4"/>bool <emphasis role="strong">write_tga_file</emphasis> (const std::string filename, const bool vflip=true, const bool rle=true) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a25e52ee1c442f48373eb6be552dda82c"/>void <emphasis role="strong">flip_horizontally</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a0550087e0a3c039b63806acc9feda270"/>void <emphasis role="strong">flip_vertically</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a09ae51aba834333fea3b5c6c142344c6"/><link linkend="_struct_t_g_a_color">TGAColor</link> <emphasis role="strong">get</emphasis> (const int x, const int y) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a511ed3ab85947e77cc3a3c9d230c541b"/>void <emphasis role="strong">set</emphasis> (const int x, const int y, const <link linkend="_struct_t_g_a_color">TGAColor</link> &amp;c)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1a489c6888c6982aa6d9c583dc81669426"/>int <emphasis role="strong">width</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_image_1ada7d16377d64c419bd4a725aeb5ff885"/>int <emphasis role="strong">height</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following files:</para>
+tgaimage.htgaimage.cpp</section>

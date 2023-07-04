@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_drawing" xml:lang="en-US">
+<title>Drawing Class Reference</title>
+<indexterm><primary>Drawing</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_drawing_1aa1f63cf7102a40bf8b117bbb3b1db00c">DrawTriangle</link> (<link linkend="_structvec_3_012_01_4">vec2</link> v0, <link linkend="_structvec_3_012_01_4">vec2</link> v1, <link linkend="_structvec_3_012_01_4">vec2</link> v2, <link linkend="_struct_t_g_a_image">TGAImage</link> &amp;image, <link linkend="_struct_t_g_a_color">TGAColor</link> color)</para>
+
+<para>Draw Trianle via sweep line. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_drawing_1aeee5b02a54290a5287ea079499b4588a"/>void <emphasis role="strong">DrawLine</emphasis> (int x0, int y0, int x1, int y1, <link linkend="_struct_t_g_a_image">TGAImage</link> &amp;image, <link linkend="_struct_t_g_a_color">TGAColor</link> color)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_drawing_1aa1f63cf7102a40bf8b117bbb3b1db00c"/><section>
+    <title>DrawTriangle()</title>
+<indexterm><primary>DrawTriangle</primary><secondary>Drawing</secondary></indexterm>
+<indexterm><primary>Drawing</primary><secondary>DrawTriangle</secondary></indexterm>
+<para><computeroutput>void Drawing::DrawTriangle (<link linkend="_structvec_3_012_01_4">vec2</link> v0, <link linkend="_structvec_3_012_01_4">vec2</link> v1, <link linkend="_structvec_3_012_01_4">vec2</link> v2, <link linkend="_struct_t_g_a_image">TGAImage</link> &amp; image, <link linkend="_struct_t_g_a_color">TGAColor</link> color)</computeroutput></para><para>
+
+<para>Draw Trianle via sweep line. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>v0</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>v1</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>v2</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>image</entry><entry>
+<para><?linebreak?> </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>The color of triangle </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+drawing.h</section>
+</section>

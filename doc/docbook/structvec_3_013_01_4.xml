@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structvec_3_013_01_4" xml:lang="en-US">
+<title>vec&lt; 3 &gt; Struct Reference</title>
+<indexterm><primary>vec&lt; 3 &gt;</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1afac7a9ec5ca949bae12f76d9dc0feb80"/>double &amp; <emphasis role="strong">operator[]</emphasis> (const int i)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1ac5c89c80e633c271763e6e5db56786d3"/>double <emphasis role="strong">operator[]</emphasis> (const int i) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1a2069a47ab46b7a2a083ecf79d8e61bc8"/>double <emphasis role="strong">norm2</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1a620601959dd5aec3f01cd6167dad8555"/>double <emphasis role="strong">norm</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1abf3d2390177c0d385eac70410c119f86"/><link linkend="_structvec">vec</link>&lt; 3 &gt; <emphasis role="strong">normalized</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1a5a99567f08c265f7c2b79f7f400f0072"/>double <emphasis role="strong">x</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1afcc1fd24bb0e9f3129975def195d6778"/>double <emphasis role="strong">y</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_013_01_4_1a1667d5bee7d297229ff8d43d7bc3cb97"/>double <emphasis role="strong">z</emphasis> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+geometry.h</section>

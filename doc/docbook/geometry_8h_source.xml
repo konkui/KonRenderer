@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_geometry_8h_source" xml:lang="en-US">
+<title>geometry.h</title>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;cassert&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+5 
+6 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structvec">vec</link>&#32;{
+7 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;data[n]&#32;=&#32;{0};
+8 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;n);&#32;<emphasis role="keywordflow">return</emphasis>&#32;data[i];&#32;}
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;n);&#32;<emphasis role="keywordflow">return</emphasis>&#32;data[i];&#32;}
+10 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm2()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>&#32;*&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+11 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm()<emphasis role="keyword">&#32;&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::sqrt(norm2());&#32;}
+12 };
+13 
+14 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<emphasis role="keywordtype">double</emphasis>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;rhs)&#32;{
+15 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ret&#32;=&#32;0;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret+=lhs[i]*rhs[i]);
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+18 }
+19 
+20 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;rhs)&#32;{
+21 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;ret&#32;=&#32;lhs;
+22 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret[i]+=rhs[i]);
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+24 }
+25 
+26 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;rhs)&#32;{
+27 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;ret&#32;=&#32;lhs;
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret[i]-=rhs[i]);
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+30 }
+31 
+32 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;rhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;&amp;lhs)&#32;{
+33 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;ret&#32;=&#32;lhs;
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret[i]*=rhs);
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+36 }
+37 
+38 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;rhs)&#32;{
+39 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;ret&#32;=&#32;lhs;
+40 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret[i]*=rhs);
+41 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+42 }
+43 
+44 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;operator/(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;rhs)&#32;{
+45 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&#32;ret&#32;=&#32;lhs;
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret[i]/=rhs);
+47 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+48 }
+49 
+50 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n1,<emphasis role="keywordtype">int</emphasis>&#32;n2&gt;&#32;<link linkend="_structvec">vec&lt;n1&gt;</link>&#32;embed(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n2&gt;</link>&#32;&amp;v,&#32;<emphasis role="keywordtype">double</emphasis>&#32;fill=1)&#32;{
+51 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n1&gt;</link>&#32;ret;
+52 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n1;&#32;i--;&#32;ret[i]=(i&lt;n2?v[i]:fill));
+53 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+54 }
+55 
+56 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n1,<emphasis role="keywordtype">int</emphasis>&#32;n2&gt;&#32;<link linkend="_structvec">vec&lt;n1&gt;</link>&#32;proj(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n2&gt;</link>&#32;&amp;v)&#32;{
+57 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;n1&gt;</link>&#32;ret;
+58 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n1;&#32;i--;&#32;ret[i]=v[i]);
+59 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+60 }
+61 
+62 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;std::ostream&amp;&#32;operator&lt;&lt;(std::ostream&amp;&#32;out,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;n&gt;</link>&amp;&#32;v)&#32;{
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&lt;n;&#32;i++)&#32;out&#32;&lt;&lt;&#32;v[i]&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;out;
+65 }
+66 
+67 <emphasis role="keyword">template</emphasis>&lt;&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structvec">vec</link>&lt;2&gt;&#32;{
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x&#32;=&#32;0,&#32;y&#32;=&#32;0;
+69 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;2);&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;?&#32;y&#32;:&#32;x;&#32;}
+70 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;2);&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;?&#32;y&#32;:&#32;x;&#32;}
+71 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm2()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>&#32;*&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+72 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm()<emphasis role="keyword">&#32;&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::sqrt(norm2());&#32;}
+73 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;2&gt;</link>&#32;normalized()&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*<emphasis role="keyword">this</emphasis>)/norm();&#32;}
+74 };
+75 
+76 <emphasis role="keyword">template</emphasis>&lt;&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structvec">vec</link>&lt;3&gt;&#32;{
+77 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;x&#32;=&#32;0,&#32;y&#32;=&#32;0,&#32;z&#32;=&#32;0;
+78 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;3);&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;?&#32;(1==i&#32;?&#32;y&#32;:&#32;z)&#32;:&#32;x;&#32;}
+79 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;&#32;operator[](<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;assert(i&gt;=0&#32;&amp;&amp;&#32;i&lt;3);&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;?&#32;(1==i&#32;?&#32;y&#32;:&#32;z)&#32;:&#32;x;&#32;}
+80 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm2()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>&#32;*&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+81 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;norm()<emphasis role="keyword">&#32;&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::sqrt(norm2());&#32;}
+82 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;3&gt;</link>&#32;normalized()&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*<emphasis role="keyword">this</emphasis>)/norm();&#32;}
+83 };
+84 
+85 <emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_structvec">vec&lt;2&gt;</link>&#32;<link linkend="_structvec_3_012_01_4">vec2</link>;
+86 <emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_structvec">vec&lt;3&gt;</link>&#32;<link linkend="_structvec_3_013_01_4">vec3</link>;
+87 <emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_structvec">vec&lt;4&gt;</link>&#32;<link linkend="_structvec">vec4</link>;
+88 <link linkend="_structvec_3_013_01_4">vec3</link>&#32;cross(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec_3_013_01_4">vec3</link>&#32;&amp;v1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec_3_013_01_4">vec3</link>&#32;&amp;v2);
+89 
+90 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structdt">dt</link>;
+91 
+92 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structmat">mat</link>&#32;{
+93 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;ncols&gt;</link>&#32;rows[nrows]&#32;=&#32;{{}};
+94 
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;ncols&gt;</link>&amp;&#32;operator[]&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idx)&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;assert(idx&gt;=0&#32;&amp;&amp;&#32;idx&lt;nrows);&#32;<emphasis role="keywordflow">return</emphasis>&#32;rows[idx];&#32;}
+96 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;ncols&gt;</link>&amp;&#32;operator[]&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idx)<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;assert(idx&gt;=0&#32;&amp;&amp;&#32;idx&lt;nrows);&#32;<emphasis role="keywordflow">return</emphasis>&#32;rows[idx];&#32;}
+97 
+98 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;nrows&gt;</link>&#32;col(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idx)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(idx&gt;=0&#32;&amp;&amp;&#32;idx&lt;ncols);
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;nrows&gt;</link>&#32;ret;
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;ret[i]=rows[i][idx]);
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+103 &#32;&#32;&#32;&#32;}
+104 
+105 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;set_col(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;idx,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;nrows&gt;</link>&#32;&amp;v)&#32;{
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(idx&gt;=0&#32;&amp;&amp;&#32;idx&lt;ncols);
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;rows[i][idx]=v[i]);
+108 &#32;&#32;&#32;&#32;}
+109 
+110 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;identity()&#32;{
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;ret;
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;)
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=ncols;j--;&#32;ret[i][j]=(i==j));
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+115 &#32;&#32;&#32;&#32;}
+116 
+117 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;det()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_structdt">dt&lt;ncols&gt;::det</link>(*<emphasis role="keyword">this</emphasis>);
+119 &#32;&#32;&#32;&#32;}
+120 
+121 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat</link>&lt;nrows-1,ncols-1&gt;&#32;get_minor(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;row,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;col)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structmat">mat</link>&lt;nrows-1,ncols-1&gt;&#32;ret;
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows-1;&#32;i--;&#32;)
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=ncols-1;j--;&#32;ret[i][j]=rows[i&lt;row?i:i+1][j&lt;col?j:j+1]);
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+126 &#32;&#32;&#32;&#32;}
+127 
+128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;cofactor(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;row,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;col)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;get_minor(row,col).det()*((row+col)%2&#32;?&#32;-1&#32;:&#32;1);
+130 &#32;&#32;&#32;&#32;}
+131 
+132 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;adjugate()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;ret;
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;)
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=ncols;&#32;j--;&#32;ret[i][j]=cofactor(i,j));
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+137 &#32;&#32;&#32;&#32;}
+138 
+139 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;invert_transpose()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;ret&#32;=&#32;adjugate();
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret/(ret[0]*rows[0]);
+142 &#32;&#32;&#32;&#32;}
+143 
+144 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;invert()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;invert_transpose().transpose();
+146 &#32;&#32;&#32;&#32;}
+147 
+148 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;ncols,nrows&gt;</link>&#32;transpose()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;ncols,nrows&gt;</link>&#32;ret;
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=ncols;&#32;i--;&#32;ret[i]=this-&gt;col(i));
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+152 &#32;&#32;&#32;&#32;}
+153 };
+154 
+155 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;&#32;<link linkend="_structvec">vec&lt;nrows&gt;</link>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structvec">vec&lt;ncols&gt;</link>&amp;&#32;rhs)&#32;{
+156 &#32;&#32;&#32;&#32;<link linkend="_structvec">vec&lt;nrows&gt;</link>&#32;ret;
+157 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;ret[i]=lhs[i]*rhs);
+158 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+159 }
+160 
+161 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;R1,<emphasis role="keywordtype">int</emphasis>&#32;C1,<emphasis role="keywordtype">int</emphasis>&#32;C2&gt;<link linkend="_structmat">mat&lt;R1,C2&gt;</link>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;R1,C1&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;C1,C2&gt;</link>&amp;&#32;rhs)&#32;{
+162 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;R1,C2&gt;</link>&#32;result;
+163 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=R1;&#32;i--;&#32;)
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=C2;&#32;j--;&#32;result[i][j]=lhs[i]*rhs.col(j));
+165 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+166 }
+167 
+168 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;operator*(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;val)&#32;{
+169 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;result;
+170 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;result[i]&#32;=&#32;lhs[i]*val);
+171 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+172 }
+173 
+174 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;operator/(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;val)&#32;{
+175 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;result;
+176 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;result[i]&#32;=&#32;lhs[i]/val);
+177 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+178 }
+179 
+180 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;rhs)&#32;{
+181 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;result;
+182 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;)
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=ncols;&#32;j--;&#32;result[i][j]=lhs[i][j]+rhs[i][j]);
+184 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+185 }
+186 
+187 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;operator-(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;lhs,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;rhs)&#32;{
+188 &#32;&#32;&#32;&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&#32;result;
+189 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=nrows;&#32;i--;&#32;)
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j=ncols;&#32;j--;&#32;result[i][j]=lhs[i][j]-rhs[i][j]);
+191 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result;
+192 }
+193 
+194 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;nrows,<emphasis role="keywordtype">int</emphasis>&#32;ncols&gt;&#32;std::ostream&amp;&#32;operator&lt;&lt;(std::ostream&amp;&#32;out,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;nrows,ncols&gt;</link>&amp;&#32;m)&#32;{
+195 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&lt;nrows;&#32;i++)&#32;out&#32;&lt;&lt;&#32;m[i]&#32;&lt;&lt;&#32;std::endl;
+196 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;out;
+197 }
+198 
+199 <emphasis role="keyword">template</emphasis>&lt;<emphasis role="keywordtype">int</emphasis>&#32;n&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structdt">dt</link>&#32;{
+200 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;det(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;n,n&gt;</link>&amp;&#32;src)&#32;{
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ret&#32;=&#32;0;
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=n;&#32;i--;&#32;ret&#32;+=&#32;src[0][i]*src.cofactor(0,i));
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+204 &#32;&#32;&#32;&#32;}
+205 };
+206 
+207 <emphasis role="keyword">template</emphasis>&lt;&gt;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structdt">dt</link>&lt;1&gt;&#32;{
+208 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;det(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmat">mat&lt;1,1&gt;</link>&amp;&#32;src)&#32;{
+209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;src[0][0];
+210 &#32;&#32;&#32;&#32;}
+211 };
+212 
+</programlisting></section>

@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_COMPILER "clang++")
+project(konRenderer VERSION 0.1.0)
+add_subdirectory(src ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ")

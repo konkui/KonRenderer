@@ -1,0 +1,47 @@
+\doxysection{TGAImage Struct Reference}
+\label{struct_t_g_a_image}\index{TGAImage@{TGAImage}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{struct_t_g_a_image_acd41e9399e944e4d5dbc3d4e8dbe199d}} 
+enum {\bfseries Format} \{ {\bfseries GRAYSCALE} =1
+, {\bfseries RGB} =3
+, {\bfseries RGBA} =4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{struct_t_g_a_image_a3a166d4d87c95c333780f04835f43794}} 
+{\bfseries TGAImage} (const int w, const int h, const int bpp)
+\item 
+\mbox{\label{struct_t_g_a_image_a86ce3605b67682310b193852419e07f2}} 
+bool {\bfseries read\+\_\+tga\+\_\+file} (const std\+::string filename)
+\item 
+\mbox{\label{struct_t_g_a_image_a3c88a50f212d25ce711f7756325f79b4}} 
+bool {\bfseries write\+\_\+tga\+\_\+file} (const std\+::string filename, const bool vflip=true, const bool rle=true) const
+\item 
+\mbox{\label{struct_t_g_a_image_a25e52ee1c442f48373eb6be552dda82c}} 
+void {\bfseries flip\+\_\+horizontally} ()
+\item 
+\mbox{\label{struct_t_g_a_image_a0550087e0a3c039b63806acc9feda270}} 
+void {\bfseries flip\+\_\+vertically} ()
+\item 
+\mbox{\label{struct_t_g_a_image_a09ae51aba834333fea3b5c6c142344c6}} 
+\textbf{ TGAColor} {\bfseries get} (const int x, const int y) const
+\item 
+\mbox{\label{struct_t_g_a_image_a511ed3ab85947e77cc3a3c9d230c541b}} 
+void {\bfseries set} (const int x, const int y, const \textbf{ TGAColor} \&c)
+\item 
+\mbox{\label{struct_t_g_a_image_a489c6888c6982aa6d9c583dc81669426}} 
+int {\bfseries width} () const
+\item 
+\mbox{\label{struct_t_g_a_image_ada7d16377d64c419bd4a725aeb5ff885}} 
+int {\bfseries height} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tgaimage.\+h\item 
+tgaimage.\+cpp\end{DoxyCompactItemize}

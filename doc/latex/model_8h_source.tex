@@ -1,0 +1,34 @@
+\doxysection{model.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}geometry.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}tgaimage.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }Model\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ std::vector<vec3>\ verts\{\};\ \ \ \ \ \textcolor{comment}{//\ array\ of\ vertices}}
+\DoxyCodeLine{00008\ \ \ \ \ std::vector<vec2>\ tex\_coord\{\};\ \textcolor{comment}{//\ per-\/vertex\ array\ of\ tex\ coords}}
+\DoxyCodeLine{00009\ \ \ \ \ std::vector<vec3>\ norms\{\};\ \ \ \ \ \textcolor{comment}{//\ per-\/vertex\ array\ of\ normal\ vectors}}
+\DoxyCodeLine{00010\ \ \ \ \ std::vector<int>\ facet\_vrt\{\};}
+\DoxyCodeLine{00011\ \ \ \ \ std::vector<int>\ facet\_tex\{\};\ \ \textcolor{comment}{//\ per-\/triangle\ indices\ in\ the\ above\ arrays}}
+\DoxyCodeLine{00012\ \ \ \ \ std::vector<int>\ facet\_nrm\{\};}
+\DoxyCodeLine{00013\ \ \ \ \ TGAImage\ diffusemap\{\};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ diffuse\ color\ texture}}
+\DoxyCodeLine{00014\ \ \ \ \ TGAImage\ normalmap\{\};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ normal\ map\ texture}}
+\DoxyCodeLine{00015\ \ \ \ \ TGAImage\ specularmap\{\};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ specular\ map\ texture}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ load\_texture(\textcolor{keyword}{const}\ std::string\ filename,\ \textcolor{keyword}{const}\ std::string\ suffix,\ TGAImage\ \&img);}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ Model(\textcolor{keyword}{const}\ std::string\ filename);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ nverts()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ nfaces()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \ \ vec3\ normal(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iface,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nthvert)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ per\ triangle\ corner\ normal\ vertex}}
+\DoxyCodeLine{00022\ \ \ \ \ vec3\ normal(\textcolor{keyword}{const}\ vec2\ \&uv)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fetch\ the\ normal\ vector\ from\ the\ normal\ map\ texture}}
+\DoxyCodeLine{00023\ \ \ \ \ vec3\ vert(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ vec3\ vert(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iface,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nthvert)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ vec2\ uv(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ iface,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nthvert)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ TGAImage\&\ diffuse()\textcolor{keyword}{\ \ const\ }\{\ \textcolor{keywordflow}{return}\ diffusemap;\ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ TGAImage\&\ specular()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ specularmap;\ \}}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+
+\end{DoxyCode}

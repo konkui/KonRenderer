@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structvec" xml:lang="en-US">
+<title>vec&lt; n &gt; Struct Template Reference</title>
+<indexterm><primary>vec&lt; n &gt;</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_1a70e028a85b78f2b3af36b1282f758bcd"/>double &amp; <emphasis role="strong">operator[]</emphasis> (const int i)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_1a81ac94327004fdb640e06c53e1ea7d63"/>double <emphasis role="strong">operator[]</emphasis> (const int i) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_1ae260ae4284abbebcc45cc9e7f92ce66e"/>double <emphasis role="strong">norm2</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_1af1bb908d7cd4a71ec9ad367c1c502d7d"/>double <emphasis role="strong">norm</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_1ae83b91ea604e774699410e455506d7d3"/>double <emphasis role="strong">data</emphasis> [n] = {0}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+geometry.h</section>

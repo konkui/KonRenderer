@@ -1,0 +1,55 @@
+\doxysection{mat$<$ nrows, ncols $>$ Struct Template Reference}
+\label{structmat}\index{mat$<$ nrows, ncols $>$@{mat$<$ nrows, ncols $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{structmat_a13dff6a1ae61b1f4d00fe06e1ecc2012}} 
+\textbf{ vec}$<$ ncols $>$ \& {\bfseries operator[$\,$]} (const int idx)
+\item 
+\mbox{\label{structmat_aca55f262c99365e5621c20b94369ec71}} 
+const \textbf{ vec}$<$ ncols $>$ \& {\bfseries operator[$\,$]} (const int idx) const
+\item 
+\mbox{\label{structmat_aa57c75b65ada2bcf9365379eca476b46}} 
+\textbf{ vec}$<$ nrows $>$ {\bfseries col} (const int idx) const
+\item 
+\mbox{\label{structmat_a4410d272dcf2c6be373b1f0f50bff4aa}} 
+void {\bfseries set\+\_\+col} (const int idx, const \textbf{ vec}$<$ nrows $>$ \&v)
+\item 
+\mbox{\label{structmat_aaeff6c531862a39411e0291d09952425}} 
+double {\bfseries det} () const
+\item 
+\mbox{\label{structmat_a15e3daff06ce934f732b7b8d9aec8bc0}} 
+\textbf{ mat}$<$ nrows-\/1, ncols-\/1 $>$ {\bfseries get\+\_\+minor} (const int row, const int col) const
+\item 
+\mbox{\label{structmat_a981f2f927fa04be53337e14c4b4fb12f}} 
+double {\bfseries cofactor} (const int row, const int col) const
+\item 
+\mbox{\label{structmat_a36076956947de8e0578da61e30598f0a}} 
+\textbf{ mat}$<$ nrows, ncols $>$ {\bfseries adjugate} () const
+\item 
+\mbox{\label{structmat_aa44afd6641f368acd513ac526e108652}} 
+\textbf{ mat}$<$ nrows, ncols $>$ {\bfseries invert\+\_\+transpose} () const
+\item 
+\mbox{\label{structmat_a9cdc5dbe6eb62dead6a04f17b183d0b0}} 
+\textbf{ mat}$<$ nrows, ncols $>$ {\bfseries invert} () const
+\item 
+\mbox{\label{structmat_a86b249c5b61f03cf4e71626731a1ced7}} 
+\textbf{ mat}$<$ ncols, nrows $>$ {\bfseries transpose} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{structmat_a796cfcc7ca19bee79a3624a4c9240c1c}} 
+static \textbf{ mat}$<$ nrows, ncols $>$ {\bfseries identity} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{structmat_acf8c54b0e4010e3e6dfbc43e8828871d}} 
+\textbf{ vec}$<$ ncols $>$ {\bfseries rows} [nrows] = \{\{\}\}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+geometry.\+h\end{DoxyCompactItemize}

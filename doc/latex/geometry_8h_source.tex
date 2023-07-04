@@ -1,0 +1,217 @@
+\doxysection{geometry.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ \textcolor{keyword}{struct\ }vec\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{double}\ data[n]\ =\ \{0\};}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{double}\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \ \ \ \ \ \ \{\ assert(i>=0\ \&\&\ i<n);\ \textcolor{keywordflow}{return}\ data[i];\ \}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{double}\ \ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ assert(i>=0\ \&\&\ i<n);\ \textcolor{keywordflow}{return}\ data[i];\ \}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ norm2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this}\ *\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ norm()\textcolor{keyword}{\ \ const\ }\{\ \textcolor{keywordflow}{return}\ std::sqrt(norm2());\ \}}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ \textcolor{keywordtype}{double}\ operator*(\textcolor{keyword}{const}\ vec<n>\&\ lhs,\ \textcolor{keyword}{const}\ vec<n>\&\ rhs)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{double}\ ret\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret+=lhs[i]*rhs[i]);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00018\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ vec<n>\ operator+(\textcolor{keyword}{const}\ vec<n>\&\ lhs,\ \textcolor{keyword}{const}\ vec<n>\&\ rhs)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ vec<n>\ ret\ =\ lhs;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret[i]+=rhs[i]);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ vec<n>\ operator-\/(\textcolor{keyword}{const}\ vec<n>\&\ lhs,\ \textcolor{keyword}{const}\ vec<n>\&\ rhs)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ vec<n>\ ret\ =\ lhs;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret[i]-\/=rhs[i]);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ vec<n>\ operator*(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ rhs,\ \textcolor{keyword}{const}\ vec<n>\ \&lhs)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ vec<n>\ ret\ =\ lhs;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret[i]*=rhs);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ vec<n>\ operator*(\textcolor{keyword}{const}\ vec<n>\&\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ rhs)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ vec<n>\ ret\ =\ lhs;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret[i]*=rhs);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ vec<n>\ operator/(\textcolor{keyword}{const}\ vec<n>\&\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ rhs)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ vec<n>\ ret\ =\ lhs;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret[i]/=rhs);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n1,\textcolor{keywordtype}{int}\ n2>\ vec<n1>\ embed(\textcolor{keyword}{const}\ vec<n2>\ \&v,\ \textcolor{keywordtype}{double}\ fill=1)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ vec<n1>\ ret;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n1;\ i-\/-\/;\ ret[i]=(i<n2?v[i]:fill));}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n1,\textcolor{keywordtype}{int}\ n2>\ vec<n1>\ proj(\textcolor{keyword}{const}\ vec<n2>\ \&v)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ vec<n1>\ ret;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n1;\ i-\/-\/;\ ret[i]=v[i]);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ std::ostream\&\ operator<<(std::ostream\&\ out,\ \textcolor{keyword}{const}\ vec<n>\&\ v)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<n;\ i++)\ out\ <<\ v[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }vec<2>\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ 0,\ y\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{double}\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \ \ \ \ \ \ \{\ assert(i>=0\ \&\&\ i<2);\ \textcolor{keywordflow}{return}\ i\ ?\ y\ :\ x;\ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{double}\ \ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ assert(i>=0\ \&\&\ i<2);\ \textcolor{keywordflow}{return}\ i\ ?\ y\ :\ x;\ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ norm2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this}\ *\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{double}\ norm()\textcolor{keyword}{\ \ const\ }\{\ \textcolor{keywordflow}{return}\ std::sqrt(norm2());\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ vec<2>\ normalized()\ \{\ \textcolor{keywordflow}{return}\ (*\textcolor{keyword}{this})/norm();\ \}}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }vec<3>\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ 0,\ y\ =\ 0,\ z\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{double}\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \ \ \ \ \ \ \{\ assert(i>=0\ \&\&\ i<3);\ \textcolor{keywordflow}{return}\ i\ ?\ (1==i\ ?\ y\ :\ z)\ :\ x;\ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{double}\ \ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ assert(i>=0\ \&\&\ i<3);\ \textcolor{keywordflow}{return}\ i\ ?\ (1==i\ ?\ y\ :\ z)\ :\ x;\ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ norm2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this}\ *\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{double}\ norm()\textcolor{keyword}{\ \ const\ }\{\ \textcolor{keywordflow}{return}\ std::sqrt(norm2());\ \}}
+\DoxyCodeLine{00082\ \ \ \ \ vec<3>\ normalized()\ \{\ \textcolor{keywordflow}{return}\ (*\textcolor{keyword}{this})/norm();\ \}}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ vec<2>\ vec2;}
+\DoxyCodeLine{00086\ \textcolor{keyword}{typedef}\ vec<3>\ vec3;}
+\DoxyCodeLine{00087\ \textcolor{keyword}{typedef}\ vec<4>\ vec4;}
+\DoxyCodeLine{00088\ vec3\ cross(\textcolor{keyword}{const}\ vec3\ \&v1,\ \textcolor{keyword}{const}\ vec3\ \&v2);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ \textcolor{keyword}{struct\ }dt;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>\ \textcolor{keyword}{struct\ }mat\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ vec<ncols>\ rows[nrows]\ =\ \{\{\}\};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ vec<ncols>\&\ operator[]\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idx)\ \ \ \ \ \ \ \{\ assert(idx>=0\ \&\&\ idx<nrows);\ \textcolor{keywordflow}{return}\ rows[idx];\ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{const}\ vec<ncols>\&\ operator[]\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idx)\textcolor{keyword}{\ const\ }\{\ assert(idx>=0\ \&\&\ idx<nrows);\ \textcolor{keywordflow}{return}\ rows[idx];\ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ vec<nrows>\ col(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ assert(idx>=0\ \&\&\ idx<ncols);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ vec<nrows>\ ret;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ ret[i]=rows[i][idx]);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_col(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idx,\ \textcolor{keyword}{const}\ vec<nrows>\ \&v)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ assert(idx>=0\ \&\&\ idx<ncols);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ rows[i][idx]=v[i]);}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ mat<nrows,ncols>\ identity()\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ mat<nrows,ncols>\ ret;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ )}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=ncols;j-\/-\/;\ ret[i][j]=(i==j));}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{double}\ det()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dt<ncols>::det(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ mat<nrows-\/1,ncols-\/1>\ get\_minor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ mat<nrows-\/1,ncols-\/1>\ ret;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows-\/1;\ i-\/-\/;\ )}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=ncols-\/1;j-\/-\/;\ ret[i][j]=rows[i<row?i:i+1][j<col?j:j+1]);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{double}\ cofactor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ get\_minor(row,col).det()*((row+col)\%2\ ?\ -\/1\ :\ 1);}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ mat<nrows,ncols>\ adjugate()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ mat<nrows,ncols>\ ret;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ )}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=ncols;\ j-\/-\/;\ ret[i][j]=cofactor(i,j));}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ mat<nrows,ncols>\ invert\_transpose()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ mat<nrows,ncols>\ ret\ =\ adjugate();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret/(ret[0]*rows[0]);}
+\DoxyCodeLine{00142\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ mat<nrows,ncols>\ invert()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ invert\_transpose().transpose();}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ mat<ncols,nrows>\ transpose()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ mat<ncols,nrows>\ ret;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=ncols;\ i-\/-\/;\ ret[i]=this-\/>col(i));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>\ vec<nrows>\ operator*(\textcolor{keyword}{const}\ mat<nrows,ncols>\&\ lhs,\ \textcolor{keyword}{const}\ vec<ncols>\&\ rhs)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ vec<nrows>\ ret;}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ ret[i]=lhs[i]*rhs);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00159\ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ R1,\textcolor{keywordtype}{int}\ C1,\textcolor{keywordtype}{int}\ C2>mat<R1,C2>\ operator*(\textcolor{keyword}{const}\ mat<R1,C1>\&\ lhs,\ \textcolor{keyword}{const}\ mat<C1,C2>\&\ rhs)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ mat<R1,C2>\ result;}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=R1;\ i-\/-\/;\ )}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=C2;\ j-\/-\/;\ result[i][j]=lhs[i]*rhs.col(j));}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00166\ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>mat<nrows,ncols>\ operator*(\textcolor{keyword}{const}\ mat<nrows,ncols>\&\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ val)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ mat<nrows,ncols>\ result;}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ result[i]\ =\ lhs[i]*val);}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00172\ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>mat<nrows,ncols>\ operator/(\textcolor{keyword}{const}\ mat<nrows,ncols>\&\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ val)\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ mat<nrows,ncols>\ result;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ result[i]\ =\ lhs[i]/val);}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00178\ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>mat<nrows,ncols>\ operator+(\textcolor{keyword}{const}\ mat<nrows,ncols>\&\ lhs,\ \textcolor{keyword}{const}\ mat<nrows,ncols>\&\ rhs)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ mat<nrows,ncols>\ result;}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ )}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=ncols;\ j-\/-\/;\ result[i][j]=lhs[i][j]+rhs[i][j]);}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00185\ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>mat<nrows,ncols>\ operator-\/(\textcolor{keyword}{const}\ mat<nrows,ncols>\&\ lhs,\ \textcolor{keyword}{const}\ mat<nrows,ncols>\&\ rhs)\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ mat<nrows,ncols>\ result;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nrows;\ i-\/-\/;\ )}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=ncols;\ j-\/-\/;\ result[i][j]=lhs[i][j]-\/rhs[i][j]);}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00192\ \}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ nrows,\textcolor{keywordtype}{int}\ ncols>\ std::ostream\&\ operator<<(std::ostream\&\ out,\ \textcolor{keyword}{const}\ mat<nrows,ncols>\&\ m)\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<nrows;\ i++)\ out\ <<\ m[i]\ <<\ std::endl;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00197\ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ n>\ \textcolor{keyword}{struct\ }dt\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ det(\textcolor{keyword}{const}\ mat<n,n>\&\ src)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ret\ =\ 0;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=n;\ i-\/-\/;\ ret\ +=\ src[0][i]*src.cofactor(0,i));}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{template}<>\ \textcolor{keyword}{struct\ }dt<1>\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ det(\textcolor{keyword}{const}\ mat<1,1>\&\ src)\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src[0][0];}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \};}
+\DoxyCodeLine{00212\ }
+
+\end{DoxyCode}

@@ -1,0 +1,41 @@
+\doxysection{Model Class Reference}
+\label{class_model}\index{Model@{Model}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_model_a9d96f377c79a8652a9d01a7fa011d4ed}} 
+{\bfseries Model} (const std\+::string filename)
+\item 
+\mbox{\label{class_model_afaf7d58fd8fa75619b5bfabb382a9ca1}} 
+int {\bfseries nverts} () const
+\item 
+\mbox{\label{class_model_a015df2dcdeb0a7b4f04800bc2f5a3cbb}} 
+int {\bfseries nfaces} () const
+\item 
+\mbox{\label{class_model_af51f24e73dcfe451217468e0e8868f37}} 
+\textbf{ vec3} {\bfseries normal} (const int iface, const int nthvert) const
+\item 
+\mbox{\label{class_model_aa814216bbfb772f50b8e856c638cd989}} 
+\textbf{ vec3} {\bfseries normal} (const \textbf{ vec2} \&uv) const
+\item 
+\mbox{\label{class_model_a26fd91dc815bbc34417724686b78a685}} 
+\textbf{ vec3} {\bfseries vert} (const int i) const
+\item 
+\mbox{\label{class_model_af0f30e4fc3f2c924d6abdcc361158089}} 
+\textbf{ vec3} {\bfseries vert} (const int iface, const int nthvert) const
+\item 
+\mbox{\label{class_model_a1367cf9ddecb7964302b15e5e542b42a}} 
+\textbf{ vec2} {\bfseries uv} (const int iface, const int nthvert) const
+\item 
+\mbox{\label{class_model_a7c037044067764c5837ad8e3d84d02cc}} 
+const \textbf{ TGAImage} \& {\bfseries diffuse} () const
+\item 
+\mbox{\label{class_model_a1e5cd101d837627b2ac708b7ea443cea}} 
+const \textbf{ TGAImage} \& {\bfseries specular} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model.\+h\item 
+model.\+cpp\end{DoxyCompactItemize}

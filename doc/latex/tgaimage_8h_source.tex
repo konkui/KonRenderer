@@ -1,0 +1,54 @@
+\doxysection{tgaimage.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ pack(push,1)}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }TGAHeader\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ std::uint8\_t\ \ idlength\ =\ 0;}
+\DoxyCodeLine{00009\ \ \ \ \ std::uint8\_t\ \ colormaptype\ =\ 0;}
+\DoxyCodeLine{00010\ \ \ \ \ std::uint8\_t\ \ datatypecode\ =\ 0;}
+\DoxyCodeLine{00011\ \ \ \ \ std::uint16\_t\ colormaporigin\ =\ 0;}
+\DoxyCodeLine{00012\ \ \ \ \ std::uint16\_t\ colormaplength\ =\ 0;}
+\DoxyCodeLine{00013\ \ \ \ \ std::uint8\_t\ \ colormapdepth\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ std::uint16\_t\ x\_origin\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ std::uint16\_t\ y\_origin\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ std::uint16\_t\ width\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ std::uint16\_t\ height\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ std::uint8\_t\ \ bitsperpixel\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ std::uint8\_t\ \ imagedescriptor\ =\ 0;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#pragma\ pack(pop)}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }TGAColor\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ std::uint8\_t\ bgra[4]\ =\ \{0,0,0,0\};}
+\DoxyCodeLine{00025\ \ \ \ \ std::uint8\_t\ bytespp\ =\ 4;}
+\DoxyCodeLine{00026\ \ \ \ \ std::uint8\_t\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \{\ \textcolor{keywordflow}{return}\ bgra[i];\ \}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }TGAImage\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{enum}\ Format\ \{\ GRAYSCALE=1,\ RGB=3,\ RGBA=4\ \};}
+\DoxyCodeLine{00031\ \ \ \ \ TGAImage()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \ \ \ \ TGAImage(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bpp);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ read\_tga\_file(\textcolor{keyword}{const}\ std::string\ filename);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ write\_tga\_file(\textcolor{keyword}{const}\ std::string\ filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vflip=\textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ rle=\textcolor{keyword}{true})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ flip\_horizontally();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ flip\_vertically();}
+\DoxyCodeLine{00037\ \ \ \ \ TGAColor\ get(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ set(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ TGAColor\ \&c);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ width()\ \ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ height()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ load\_rle\_data(std::ifstream\ \&in);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ unload\_rle\_data(std::ofstream\ \&out)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ std::uint8\_t\ bpp\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<std::uint8\_t>\ data\ =\ \{\};}
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}

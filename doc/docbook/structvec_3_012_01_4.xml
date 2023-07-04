@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structvec_3_012_01_4" xml:lang="en-US">
+<title>vec&lt; 2 &gt; Struct Reference</title>
+<indexterm><primary>vec&lt; 2 &gt;</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1a9e9925a61fee5d148e6af0a239edb353"/>double &amp; <emphasis role="strong">operator[]</emphasis> (const int i)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1a829b7a47bec5d6993d7069edbc018ca1"/>double <emphasis role="strong">operator[]</emphasis> (const int i) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1a534a6f0ebbcff0bc560a7c47357ee0b9"/>double <emphasis role="strong">norm2</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1adc207f8805a7c3cff2b0eb811779a22a"/>double <emphasis role="strong">norm</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1aeac94fe42dcc7e294264180af39857f8"/><link linkend="_structvec">vec</link>&lt; 2 &gt; <emphasis role="strong">normalized</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1a9ad4bf7be9705d7c7147cb1f0c7a02c4"/>double <emphasis role="strong">x</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_structvec_3_012_01_4_1a657f46ba333f4fe882c908a04c3662f9"/>double <emphasis role="strong">y</emphasis> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+geometry.h</section>

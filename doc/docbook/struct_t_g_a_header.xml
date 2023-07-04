@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_t_g_a_header" xml:lang="en-US">
+<title>TGAHeader Struct Reference</title>
+<indexterm><primary>TGAHeader</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1aa17196c0388d04cf08798a91829e3096"/>std::uint8_t <emphasis role="strong">idlength</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a85d9c2954b899a3c3cd8775b49637d4c"/>std::uint8_t <emphasis role="strong">colormaptype</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a7123bf2639ad3ccc4207d3a8201281df"/>std::uint8_t <emphasis role="strong">datatypecode</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a94cafe85c2ec924de0c3e76f2caeaaa5"/>std::uint16_t <emphasis role="strong">colormaporigin</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1ada11ff1d1dbecd9055a1526a3ae7bdc1"/>std::uint16_t <emphasis role="strong">colormaplength</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a8754d4f820c33a6a48fd5b0f97148485"/>std::uint8_t <emphasis role="strong">colormapdepth</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a0c6161a51bb76dd94024886837f6c742"/>std::uint16_t <emphasis role="strong">x_origin</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a2aae610d5b321bb3980ec1c44458e300"/>std::uint16_t <emphasis role="strong">y_origin</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a764e12d51c813bc5ab74017326d2169f"/>std::uint16_t <emphasis role="strong">width</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1ace127b863457b93528d84f35f2b07bff"/>std::uint16_t <emphasis role="strong">height</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1ae39422b33a8cda53750025d02263d6e0"/>std::uint8_t <emphasis role="strong">bitsperpixel</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_header_1a2c2028aa69cf27bad34d011b771fd21e"/>std::uint8_t <emphasis role="strong">imagedescriptor</emphasis> = 0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+tgaimage.h</section>

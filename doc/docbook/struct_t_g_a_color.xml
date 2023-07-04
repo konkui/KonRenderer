@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_t_g_a_color" xml:lang="en-US">
+<title>TGAColor Struct Reference</title>
+<indexterm><primary>TGAColor</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_t_g_a_color_1ab4b21e3f4e6c8e918afd509bbad8c9df"/>std::uint8_t &amp; <emphasis role="strong">operator[]</emphasis> (const int i)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_t_g_a_color_1a7d288fff95c01ce0ddd77d2b308a10ab"/>std::uint8_t <emphasis role="strong">bgra</emphasis> [4] = {0,0,0,0}</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_t_g_a_color_1a3a98150a572f5ff08b2b9a2c41497281"/>std::uint8_t <emphasis role="strong">bytespp</emphasis> = 4</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+tgaimage.h</section>
